@@ -1,0 +1,285 @@
+/*form label {
+	float: left;
+	//width: 150px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}*/
+.clear {
+	display: block;
+	clear: both;
+	width: 100%;
+}
+.mensaje-error{
+	background-color: #F8FC06;
+	padding: 10px;
+	width: 30%;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+}
+.lblRubros {
+	float: left;
+	padding: 0;
+	/*margin: 10px auto;*/
+	width: 50%;
+}
+.lblSubRubros{
+	float: left;
+	padding: 0;
+	margin: auto;
+	width: 50%;
+	/*margin: 10px auto;*/
+}
+
+/*body {
+	background-color: #DBE8F9;
+	font: 11px/24px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #5A698B;
+}*/
+#dtos_filiat{
+	margin: 10px;
+}
+#consultaProv{
+	width: 50%;
+	margin: 0 auto;
+}
+#consultaProvNo{
+	width: 300px;
+	height: 46px;
+	color: #508;
+	font: bold 21px/28px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin-right: 20px;
+	padding-top: 5px;
+	/*background: transparent url("../images/bg_legend.gif") no-repeat;*/
+	background-color: #35FC71;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	/*text-transform: uppercase;*/
+	letter-spacing: 2px;
+	text-align: center;
+}
+#consultaProvSi{
+	width: 200px;
+	height: 30px;
+	color: #508;
+	font: bold 16px/23px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-top: 5px;
+	margin-right: 20px;
+	/*background: transparent url("../images/bg_legend.gif") no-repeat;*/
+	background-color: #35FC71;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	/*text-transform: uppercase;*/
+	letter-spacing: 2px;
+	text-align: center;
+}
+#consultaProv input:hover{
+ /*box-shadow: 0 5px 5px #508530, 0 9px 0 #508530, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 15px rgba(255,255,255,0.4), inset 0 -2px 9px rgba(0,0,0,0.2)*/
+ transform: scale(1.1);
+}
+#consultaProvModif{
+	width: auto;
+	color: #508;
+	font: bold 16px/23px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-top: 5px;
+	margin-right: 20px;
+	/*background: transparent url("../images/bg_legend.gif") no-repeat;*/
+	background-color: #35FC71;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	/*text-transform: uppercase;*/
+	letter-spacing: 2px;
+	text-align: center;
+}
+#title {
+	width: 90%;
+	height: 26px;
+	color: #5A698B;
+	font: bold 11px/18px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding-top: 5px;
+	/*background: transparent url("../images/bg_legend.gif") no-repeat;*/
+	background-color: #35FC71;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+}
+#title_1 {
+	width: 90%;
+	height: 46px;
+	color: #5A698B;
+	font: bold 21px/28px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin-bottom: 20px;
+	margin: 0 auto;
+	padding-top: 5px;
+	/*background: transparent url("../images/bg_legend.gif") no-repeat;*/
+	background-color: #35FC71;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+}
+#divform{
+width: 100%;
+align-content: center;
+}
+/*form {
+	width: 335px;
+}*/
+#datos{
+	width: 80%;
+	margin: 0 auto;
+}
+/*
+.col1 {
+	text-align: right;
+	width: 135px;
+	height: 31px;
+	margin: 0;
+	float: left;
+	margin-right: 2px;
+	background: url(images/bg_label.gif) no-repeat;
+}
+
+.col2 {
+	width: 195px;
+	height: 31px;
+	display: block;
+	float: left;
+	margin: 0;
+	background: url(images/bg_textfield.gif) no-repeat;
+}
+
+.col2comment {
+	width: 195px;
+	height: 98px;
+	margin: 0;
+	display: block;
+	float: left;
+	background: url(images/bg_textarea.gif) no-repeat;
+}
+
+.col1comment {
+	text-align: right;
+	width: 135px;
+	height: 98px;
+	float: left;
+	display: block;
+	margin-right: 2px;
+	background: url(images/bg_label_comment.gif) no-repeat;
+}
+
+div.row {
+	clear: both;
+	width: 335px;
+}
+*/
+
+/*
+input .submit {
+	height: 29px;
+	width: 230px;
+	font-weight: bold;
+	padding-top: 5px;
+	clear: both;
+}
+*/
+#cuit1, #cuit3{	width: 30px;	margin: auto;}
+#cuit2{	margin: auto;}
+#conv_multi{	width: 300px;}
+.altura{	width: 80px;}
+.piso, .dpto, .tipoDoc{	width: 60px;}
+
+#srr{
+	width: 600px;
+}
+/*parte verificacion cuit*/
+#Error{
+
+	background-image:url(../images/no.png);
+
+	background-repeat:no-repeat;
+
+	background-position:left;
+
+	color:#FF0000;
+
+	padding-left:33px;
+
+	/*height:19px;*/
+
+	padding-top:12px;
+
+	padding-right:10px;
+
+	}
+
+#Success{
+
+	background-image:url(../images/yes.png);
+
+	background-repeat:no-repeat;
+
+	background-position:left;
+
+	color:#669933;
+
+	padding-left:33px;
+
+	/*height:19px;*/
+
+	padding-top:12px;
+
+	padding-right:10px;
+
+	}
+
+/**/
+
+input[type=radio]{
+	width: auto;
+}
+
+input {
+	background-color: #fff;
+	width: 20%;
+	font: 15px/18px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #5A698B;
+	margin: 8px 0 10px 16px;
+	padding: 1px;
+	border: 1px solid #8595B2;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+textarea {
+	border: 1px solid #8595B2;
+	background-color: #fff;
+	font: 11px/14px "Lucida Grande", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #5A698B;
+	margin: 4px 0 5px 8px;
+  padding: 2px;
+	border: 1px solid #8595B2;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	vertical-align: top;
+}
+/*input[type="text"]
+      {
+         width: 200px;
+         border: 1px solid #CCC;
+      }*/

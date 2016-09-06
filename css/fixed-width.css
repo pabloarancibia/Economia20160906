@@ -1,0 +1,120 @@
+/*Reset Rules
+ 
+        
+ #Lists
+================================================== 
+
+*/	ul, ol { margin: 0 !important; }
+	ul { list-style: none outside; }
+	ol { list-style: decimal; }
+	ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
+	ul.square { list-style: square outside; }
+	ul.circle { list-style: circle outside; }
+	ul.disc { list-style: disc outside; }
+	ul ul, ul ol,
+	ol ol, ol ul {}
+	ul ul li, ul ol li,
+	ol ol li, ol ul li {}
+	li { line-height: 18px; }
+	ul.large li { line-height: 21px; }
+	li p { line-height: 21px; }
+        ol, ul {
+		list-style: none; }/*
+
+Reset Rules End*/
+
+
+/* =================================================================== */
+/* Fixed Width
+====================================================================== */
+
+body {
+    background: url(../images/bg/bgcity-6.jpg) no-repeat;
+    background-repeat: no-repeat;
+    font-size: 12px;
+    color: #666;
+    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+ 
+#wrapper {
+    background: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: 0 7px 9px 0 rgba(0, 0, 0, 0.2), 0 11px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px 30px 0px 30px;
+    width: 1200px ;
+    margin: 0px auto 0px auto;
+}
+
+#wrapper-navbar {
+    -webkit-box-shadow: none;
+    width: 100%;
+}
+
+#wrapper-main {
+    background: #fff !important;
+    -webkit-box-shadow: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    padding: 12px 20px 55px 20px;
+    width: 1200px ;
+    margin: 0px auto 0px auto;
+}
+
+#wrapper-footer {
+    background: #2b373d;
+    -webkit-box-shadow: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 35px 40px 40px 40px;
+    width: 1200px ;
+    margin: 0px auto 0px auto;
+}
+
+#footer {
+    /*background: #333;*/
+    padding: 15px 35px 0px 35px;
+    
+
+    margin: 0 auto;
+}
+
+#wrapper-footer2 {
+    background: #2b373d;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    padding: 20px 20px 20px 20px;
+    width: 1200px ;
+    margin: 0px auto 0px auto;
+}
+
+.thumbnail{border: none !important;}
+
+h3, h2 ,h1 ,h4{
+
+    font-weight: normal !important;
+
+}
+
+/* Smaller than standard 1029 (devices and browsers)
+====================================================================== */
+@media only screen and (max-width: 1029px) {
+
+
+
+}
+
+/* Tablet Portrait (devices and browsers)
+====================================================================== */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+
+}
+
+/* All Mobile Sizes (devices and browser)
+====================================================================== */
+@media only screen and (max-width: 767px) {
+
+.nav-shadow {
+
+bottom: -12px !important;}
+}

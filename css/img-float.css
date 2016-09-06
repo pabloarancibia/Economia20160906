@@ -1,0 +1,38 @@
+.img-float {
+	float: left;
+    margin-top: -27px;
+    margin-bottom: 27px;
+}
+
+.navbar {
+  margin-bottom: 0 !important;
+}
+
+#navigation {
+    background: #333;
+    display: block;
+    width: 100%;
+    float: left;
+    max-height: 62px;
+    margin: -1px 0 25px 0;
+    position: relative;
+    background: red;
+    background: -webkit-linear-gradient(#685959, rgba(0, 0, 0, .5));
+    background: -o-linear-gradient(#685959, rgba(0, 0, 0, .5));
+    background: -moz-linear-gradient(#685959, rgba(0, 0, 0, .5));
+    background: linear-gradient(#685959, rgba(0, 0, 0, .5));
+    border-right: 2px #C0B5B5 solid;
+}
+
+.nav-sombra {
+    width: 100%;
+    height: 27px;
+    background: url(../images/nav-shadow.png) no-repeat center top;
+    background-size: 100% 100%;
+    position: absolute;
+    margin-top: 141px;
+}
+
+.navbar {
+    margin-top: 13px;
+}

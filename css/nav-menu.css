@@ -1,0 +1,188 @@
+
+/* The container <div> - needed to position the dropdown content */
+.float-left {
+    float: left;
+}
+
+.usuario {
+    position: absolute !important;
+    color: #fff;
+    font-size: 15px;
+    margin-left: 78%;
+    margin-top: 8%;
+    border-top: 1px #fff solid;
+    line-height: 30px;
+
+    }
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    white-space: nowrap;
+    min-width: 160px;
+    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2);
+}
+
+h4 small,
+.h4 small,
+h5 small,
+.h5 small,
+h6 small,
+.h6 small,
+h4 .small,
+.h4 .small,
+h5 .small,
+.h5 .small
+h6 .small,
+.h6 .small {
+  font-size: 80%;
+}
+
+/*---------------------------------------------------------*/
+
+.nav-margin {
+    margin-top: 50px;
+
+}
+
+.navbar {
+    margin-bottom: -6px;
+}
+
+.nav-shadow {
+    margin-top: 177px;
+}
+
+#navigation {
+    background: #333;
+    display: block;
+    width: 100%;
+    float: left;
+    max-height: 62px;
+    margin: 5px 0 25px 0;
+    position: relative;
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#685959, rgba(0, 0, 0, .5)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#685959, rgba(0, 0, 0, .5)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#685959, rgba(0, 0, 0, .5)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#685959, rgba(0, 0, 0, .5)); /* Standard syntax */
+    border-right: 2px #C0B5B5 solid;
+}
+
+#navigation ul,
+#navigation li {
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:inline;
+}
+
+#navigation ul li{
+    /*float: left;*/
+    position:relative;
+    line-height: 30px;
+}
+
+#navigation ul li a {  
+    font-family: 'Carrois Gothic', sans-serif;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 25px;
+    text-transform: uppercase;
+} 
+
+#navigation ul li a:hover {
+    background: #89be53;
+    color: #fff;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+#navigation ul li a.active  {
+    background: rgba(34, 34, 34, 0.31);
+    color: #fff;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+.active {
+    box-shadow: 1px 0px 0 0 #C0B5B5 inset,
+                2px 0 0 0 #A79F9F inset;
+}
+
+#navigation ul ul {
+    position: absolute;
+    display: none;
+    top: 51px;
+    left: 0;
+    background: #5a5a5a;
+    z-index: 999;
+}
+#navigation ul ul li{line-height: 20px;}
+#navigation ul ul li a {color: #f2f2f2;}
+#navigation ul ul li a:hover {
+    color: #fff;
+}
+
+
+/*----DROPDOWN----*/
+
+#navigation ul ul li a {
+    text-align: left;
+    display: block;
+    margin: 0;
+    padding: 7px 18px;
+    font-weight: normal;
+    font-size: 12px;
+    border-bottom: 1px solid #404040;
+    background: #5a5a5a;
+
+}
+
+#navigation ul ul ul { 
+    position: absolute; 
+    top:0px; 
+    left:100%; 
+    z-index: 999;
+}
+
+#navigation ul ul ul li a { 
+    border-bottom: 1px solid #404040 !important;
+    border-top: 1px solid transparent;
+    background: none;
+}
+
+#navigation ul ul li:last-child a, #navigation ul ul li:last-child a:hover {border-bottom: 1px solid transparent}
+#navigation ul ul ul li:last-child a {border-bottom: 1px solid transparent !important}
+#navigation ul li:hover>ul {opacity: 1; position:absolute; top:99%; left:0;}
+#navigation ul ul li:hover>ul {position:absolute; top:0; left:100%; opacity: 1; z-index:497;}
+/*#navigation ul li :hover > a {background: #7f7e7e;}*/
+#navigation ul ul li:hover > a {color: #fff;}
+
+
+/* All Mobile Sizes (devices and browser)
+----------------------------------- */
+@media only screen and (max-width: 600px) {
+
+    #navigation {
+        float: none;
+    }
+
+    .js #nav,
+    .slide-caption,
+    .search-form,
+    #tagline,
+    .social-icons,
+    .widget,
+    .widget-alt,
+    #navigation ul li a {
+        display: none;
+    }
+

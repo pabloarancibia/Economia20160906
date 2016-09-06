@@ -1,0 +1,124 @@
+#navigation {
+    background: #333;
+    display: block;
+    width: 100%;
+    float: left;
+    max-height: 62px;
+    margin: 0 0 25px 0;
+    position: relative;
+}
+
+#navigation ul,
+#navigation li {
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:inline;
+}
+#navigation ul li{
+    float:left;
+    position:relative;
+    background: url(../images/nav-divider.png)  repeat-y right;
+    line-height: 30px;
+}
+
+#navigation ul li a { 
+    font-family: 'Carrois Gothic', sans-serif;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 15px 25px;
+    text-transform: uppercase;
+
+}
+
+#navigation ul li a:hover {
+    background: #000;
+    color: #fff;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+#navigation ul li a.active  {
+    background: #222;
+    color: #fff;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+#navigation ul ul {
+    position: absolute;
+    display: none;
+    top: 51px;
+    left: 0;
+    background: #303030;
+    z-index: 999;
+}
+#navigation ul ul li{line-height: 20px;}
+#navigation ul ul li a {color: #f2f2f2;}
+#navigation ul ul li a:hover {
+    color: #fff;
+}
+
+#navigation ul ul li a {
+    display: block;
+    width: 150px;
+    margin: 0;
+    padding: 9px 18px;
+    font-weight: normal;
+    font-size: 12px;
+    border-bottom: 1px solid #404040;
+    background: none;
+}
+
+#navigation ul ul ul { 
+    position: absolute; 
+    top:0px; 
+    left:100%; 
+    z-index: 999;
+}
+
+#navigation ul ul ul li a { 
+    border-bottom: 1px solid #404040 !important;
+    border-top: 1px solid transparent;
+    background: none;
+}
+
+#navigation ul ul li:last-child a, #navigation ul ul li:last-child a:hover {border-bottom: 1px solid transparent}
+#navigation ul ul ul li:last-child a {border-bottom: 1px solid transparent !important}
+#navigation ul li:hover>ul {opacity: 1; position:absolute; top:99%; left:0;}
+#navigation ul ul li:hover>ul {position:absolute; top:0; left:100%; opacity: 1; z-index:497;}
+#navigation ul li:hover > a {background: #000;}
+#navigation ul ul li:hover > a {color: #fff;}
+
+
+
+
+/* All Mobile Sizes (devices and browser)
+----------------------------------- */
+@media only screen and (max-width: 767px) {
+
+    #navigation {
+        float: none;
+    }
+
+    .js .selectnav {
+        display: block;
+    }
+
+    .js #nav,
+    .slide-caption,
+    .search-form,
+    #tagline,
+    .social-icons,
+    .widget,
+    .widget-alt,
+    #navigation ul li a {
+        display: none;
+    }
