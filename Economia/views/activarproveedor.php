@@ -43,15 +43,18 @@ $conexion=Conectarse();
  </div></td>
 </tr>
 <tr><td width="40%"></td>
+<!--
 <td>
 <div align="left" style="color:#ffffff;" >
 <p>
-<h4>USUARIO:<?php if (!empty($_SESSION["usuario"])){echo $_SESSION["usuario"];}else{echo ("ERROR");}?>
+<h4>USUARIO:
+<?php //if (!empty($_SESSION["usuario"])){echo $_SESSION["usuario"];}else{echo ("ERROR");}?>
 -
-<?php if (!empty($_SESSION["razonsocial"])){echo $_SESSION["razonsocial"];}else{echo ("ERROR");}?>
+<?php //if (!empty($_SESSION["razonsocial"])){echo $_SESSION["razonsocial"];}else{echo ("ERROR");}?>
 </h4>
 </p>
  </div></td>
+ -->
  <td><div align="left" style="color:#ffffff;" >
 <p><h5>
  <script languaje="JavaScript">
@@ -77,7 +80,7 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
  <li class="dropdown">
    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">INICIO<span class="caret"></span></a>
     <ul class="dropdown-menu">
-    <li><a href="../views/frmMenu.php">Página Principal</a></li>
+    <!--<li><a href="../views/frmMenu.php">Página Principal</a></li>-->
    </ul></li></ul>
  </div></div>
  </nav></header>
@@ -211,7 +214,7 @@ Requisitos:
 </h3>
 <div class="" style="float:left">
 <a href="../archivos/RequisitosProveedores.pdf" download="RequisitosProveedores.pdf" >
-<label>Descargar Requisitos</label>
+<label>Descargar Requisitos Proveedores</label>
 </a>
 <br>
 <a href="../archivos/RequisitosProveedores.pdf" download="DeclaracionJurada.pdf">

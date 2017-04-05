@@ -3,10 +3,10 @@ if(!isset($_SESSION))
 {
     session_start();
 }
-if (!isset($_SESSION["usuario"])){
+if (!isset($_SESSION["apynom"])){
     header("Location:../views/frmMenu.php?nologin=false");}
-$_SESSION["usuario"];
-$_SESSION["razonsocial"];
+$_SESSION["apynom"];
+//$_SESSION["razonsocial"];
 if (!function_exists('Conectarse')) {
 include "../Conexion/Conexion.php";
 }
@@ -43,7 +43,7 @@ $conexion=Conectarse();
 <tr><td width="40%"></td>
 <td><div align="left" style="color:#ffffff;" ><p><h4>USUARIO:
 <?php
-echo $_SESSION["usuario"]?>-<?php echo $_SESSION["razonsocial"]
+echo $_SESSION["apynom"]?>-<?php //echo $_SESSION["razonsocial"]
 ?></h4></p>
 </div></td>
  <td><div align="left" style="color:#ffffff;" >
@@ -71,7 +71,7 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
  <li class="dropdown">
    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">INICIO<span class="caret"></span></a>
     <ul class="dropdown-menu">
-    <li><a href="../views/frmMenu.php">Página Principal</a></li>
+    <li><a href="../views/frmMenuUsuarios.php">Página Principal</a></li>
    </ul></li></ul>
  </div></div>
  </nav></header>
@@ -101,7 +101,7 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
 #consultaHab input[type=button]:hover{
  box-shadow: 0 5px 5px #508530, 0 9px 0 #508530, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 15px rgba(255,255,255,0.4), inset 0 -2px 9px rgba(0,0,0,0.2)
 }
-#txtCuit{
+#txtCuit, #txtNroSol{
   background-color: #fff;
 	/*width: 20%;*/
   height: 45px;
@@ -118,10 +118,19 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
 	letter-spacing: 2px;
 	text-align: center;
 }
-#nombres, #domicilio{
+#nombres, #domicilio, #dniInt, #nroSol{
   width: 80%;
   height: 45px;
   margin: 10px;
+  
+   padding-top: 5px;
+  border: 1px solid #8595B2;
+	border-radius: 7px;
+	-webkit-border-radius: 5px 10px;  /* Safari  */
+	-moz-border-radius: 5px 10px;     /* Firefox */
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	text-align: center;
 }
 </style>
 
@@ -129,22 +138,39 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
 <!-- pregunto si tiene habilitacion municipal -->
   <div id='consultaHab'>
     <input type="text" id="txtCuit" name="txtCuit" class="solo-numero" placeholder="NUMERO DE CUIT" required="required">
+	<input type="text" id="txtNroSol" name="txtNroSol" class="solo-numero" placeholder="NUMERO DE SOLICITUD" required="required">
     <input type="button" id="getdata" name="getdata" value="Traer Datos"/><br /><br />
     <div id="datosProv" name="datosProv">
-      <input type="text" id="nombres" name="nombres" value=""><br />
-      <input type="text" id="domicilio" name="domicilio" value="">
+	<h3><span class="label label-success">Nombres</span></h3>
+      <input type="text" id="nombres" name="nombres" value="" disabled ><br />
+	  <h3><span class="label label-success">Domicilio</span></h3>
+      <input type="text" id="domicilio" name="domicilio" value=""disabled><br />
+	  <h3><span class="label label-success">Dni</span></h3>
+	  <input type="text" id="dniInt" name="dniInt" value=""disabled><br />
+	  <h3><span class="label label-success">Nº Solicitud</span></h3>
+	  <input type="text" id="nroSol" name="nroSol" value=""disabled><br />
     </div>
       <form id="frmInscrip" name="frmInscrip" method="post" action="../Logica/actProvDef.php">
         <input type="text" id="cuitIns" name="cuitIns" value="">
         <input type="text" id="emailIns" name="emailIns" value="">
 		<input type="text" id="nroProvIns" name="nroProvIns" value="">
-    <input type="submit" id="conHab" name="conHab" value="GENERAR NUMERO DE PROVEEDOR CON HABILITACION MUNICIPAL - Inscripto"/><br /><br />
+		<input type="text" id="nroSolIns" name="nroSolIns" value="">
+	<h3><span class="label label-success">GENERAR NUMERO DE PROVEEDOR </span></h3>
+    <input type="submit" id="conHab" name="conHab" class="btn btn-warning" value="CON HABILITACION MUNICIPAL - Inscripto"/><br /><br />
   </form>
   <form id="frmNoInscrip" name="frmNoInscrip" method="post" action="../Logica/actProvDef.php">
     <input type="text" id="cuitNoIns" name="cuitNoIns" value="">
     <input type="text" id="emailNoIns" name="emailNoIns" value="">
 	<input type="text" id="nroProvNoIns" name="nroProvNoIns" value="">
-    <input type="submit" id="sinHab" name="sinHab" value="SIN HABILITACION MUNICIPAL - No Inscripto"/>
+	<input type="text" id="nroSolNoIns" name="nroSolNoIns" value="">
+    <input type="submit" id="sinHab" name="sinHab" class="btn btn-warning" value="SIN HABILITACION MUNICIPAL - No Inscripto"/>
+  </form><br /><br />
+  <form id="frmProvConNum" name="frmProvConNum" method="post" action="../Logica/actProvDef.php">
+    <input type="text" id="cuitProvConNum" name="cuitProvConNum" value="">
+    <input type="text" id="emailProvConNum" name="emailProvConNum" value="">
+	<input type="text" id="nroProvConNum" name="nroProvConNum" value="">
+	<input type="text" id="nroSolProvConNum" name="nroSolProvConNum" value="">
+    <input type="submit" id="ProvConNum" name="ProvConNum" class="btn btn-warning" value="PROVEEDOR CON NUMERO"/>
   </form>
   </div>
 

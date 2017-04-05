@@ -139,7 +139,7 @@ document.write("<small>  <font color='FFFFFF'>"+dayarray[day]+" "+daym+" de "+mo
   <strong>
   <a href="Economia/views/frmConsueco.php" class="hvr-icon-rotate btn2 btn-primary btn-md">CONSULTA ON-LINE</a></strong>
   <strong>
-  <a href="Economia/views/frmConsueco.php" class="hvr-icon-rotate btn2 btn-primary btn-md">PREINCRIPCION PROVEEDORES</a></strong>
+  <a href="/Economia/views/frmProveedoresInscrip.php?tipo=PRE290290" class="hvr-icon-rotate btn2 btn-primary btn-md">PREINCRIPCION PROVEEDORES</a></strong>
   
   </div></div></div>
  <div id="scroll-top-top"><a href="#" title="Volver al inicio"></a></div>

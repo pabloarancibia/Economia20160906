@@ -1,4 +1,5 @@
 <?php
+/*
 if(!isset($_SESSION))
 {
     session_start();
@@ -6,7 +7,7 @@ if(!isset($_SESSION))
 if (!isset($_SESSION["usuario"])){
     header("Location:../views/frmMenu.php?nologin=false");}
 $_SESSION["usuario"];
-$_SESSION["razonsocial"];
+$_SESSION["razonsocial"];*/
 if (!function_exists('Conectarse')) {
 include "../Conexion/Conexion.php";
 }
@@ -55,8 +56,16 @@ $conexion=Conectarse();
  </div></td>
 </tr>
 <tr><td width="40%"></td>
-<td><div align="left" style="color:#ffffff;" ><p><h4>USUARIO:<?php echo $_SESSION["usuario"]?>-<?php echo $_SESSION["razonsocial"]?></h4></p>
- </div></td>
+<!--<td><div align="left" style="color:#ffffff;" ><p><h4>USUARIO:
+<?php 
+//echo $_SESSION["usuario"]
+?>
+- 
+<?php 
+//echo $_SESSION["razonsocial"]
+?>
+</h4></p>
+ </div></td>-->
  <td><div align="left" style="color:#ffffff;" >
 <p><h5>
  <script languaje="JavaScript">
@@ -97,8 +106,10 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
 <!--<div class="container-fluid" align="center" style="background-color:#D8D8D8;">-->
 
 <div id='container-fluid' style="margin-right:20px;margin-left:50px">
+
 <!-- FORMULARIO -->
 <div id="divform">
+	
 <form id="form1" name="form1" method="post" action="../Logica/ProveedoresIncrip.php" onsubmit="return verificar()">
   <h4 align="center" class="letra" style="background-color:#7FFF00; color:red;"><strong> <?php
          if(isset($respuesta))
@@ -106,9 +117,22 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
 <div id="title_1">REGISTRO DE PROVEEDORES</div>
 <br />
 <div id='consultaProv'>
+<?php
+	if (!empty($_GET['tipo'])){
+		if($_GET['tipo']== 'PRE290290'){
+
+echo ("<input type='button' id='consultaProvNo' value='PRE-INSCRIPCION'/><label for=''>Si es la Primera vez que ingresa</label><br /><br />");
+
+		}elseif ($_GET['tipo']== 'PROV280280'){
+echo ("<input type='button' id='consultaProvSi' value='ACTUALIZACION'/><label for=''>Si Ya tiene número de Proveedor</label><br />");
+		}
+	} 
+?>
+<!--
   <input type="button" id="consultaProvNo" value="PRE-INSCRIPCION"/><label for="">Si es la Primera vez que ingresa</label><br /><br />
   <input type="button" id="consultaProvSi" value="ACTUALIZACION"/><label for="">Si Ya tiene número de Proveedor</label><br />
-  <input type="button" id="consultaProvModif" value="MODIFICAR DATOS" /><label for="">Si Ingresó mal los datos de la Pre-Inscripción</label>
+  -->
+  <!--<input type="button" id="consultaProvModif" value="MODIFICAR DATOS" /><label for="">Si Ingresó mal los datos de la Pre-Inscripción</label>-->
 </div>
 <div id="divNumSolicitud">
   <label for="NroSol" id="lblNroSol" name='lblNroSol'>INGRESE EL NÚMERO DE SOLICITUD DE PRE INSCRIPCIÓN</label>
@@ -339,6 +363,28 @@ document.getElementById("srr").options[i].style.display ="none";
 <div id="title">GUARDAR</div>
 <br />
 <label>Los campos marcados con * son obligatorios</label><br /><br />
+
+<!-- ZONA CAPTCHA -->
+
+<div class="row">
+ <div class="col-md-3"></div>
+  <div class="col-md-1">
+  <p><img id="captcha" src="../securimage/securimage_show.php" alt="CAPTCHA Image" /></p>
+   </div>
+ </div>
+ <!-- <div class="row"> -->
+ <div>
+   <div class="col-md-3"></div>
+   <div class="col-md-2">Copie el codigo de seguridad:</div>
+   <div class="col-md-5"><input type="text" name="captcha_code" size="60" maxlength="6" />
+          <a href="#" onClick="document.getElementById('captcha').src = '../securimage/securimage_show.php?' + Math.random(); return false">[ Elegir otra imagen]</a></div>
+  <div class="col-md-3">
+  <strong><style="background-color:#7FFF00; color:red; width: 428px; height: 45px;"><?php 
+      if(isset($respuesta))
+      echo $respuesta;?></style></strong> 
+</div>
+ </div>
+<!-- FIN ZONA CAPTCHA -->
 <input type="submit" name="Submit" value="GUARDAR" />
 <input type="reset" />
 </div><!-- fin div datos -->

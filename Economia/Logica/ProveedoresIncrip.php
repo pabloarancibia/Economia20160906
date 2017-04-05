@@ -7,6 +7,14 @@
 if (!function_exists('Conectarse')) {
 include "../Conexion/Conexion.php";
 }
+
+
+//COMPROBAMOS CAPTCHA
+include_once $_SERVER['DOCUMENT_ROOT'].'/Economia/securimage/securimage.php';
+$securimage = new Securimage();
+if($securimage->check($_POST['captcha_code'])== TRUE){
+///// captcha correcto//////
+
 //Post Param
 if(empty($_POST['nroProv'])){
 /////////queda obsoleto por ahora.....traigo ultimo num_prov y le asigno +1
@@ -272,6 +280,16 @@ if (mysqli_query($conexion,$queryGuardar)){
 include("../views/frmProveedoresInscrip.php");
 mysqli_close($conexion);
 
+//
+} //fin if true captcha
+ ////// captcha incorrecto///////////////
+ else{
+  $respuesta = "CODIGO DE SEGURIDAD INCORRECTO REINGRESE LOS DATOS";
+  include("../views/frmProveedoresInscrip.php"); 
+  $flag=false;
+  exit;
+ }
+
 //.........FUNCIONES.................//
 ///////////////////////
 function BuscarNumProv(){
@@ -390,4 +408,6 @@ return array(true);
 return array(false,"Mailer Error: ".$mail->ErrorInfo);
 }
 }
+
+
 ?>

@@ -255,6 +255,15 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
     </ul>
   </li>
 </ul>
+<ul>
+ <li class="float-left"><?php 
+  if($level==99){?>
+  <a href="#">PROVEEDORES</a>
+  <ul class="dropdown-content">
+   <li><a href="../views/activarproveedordefinitivo.php">Activar Proveedor</a></li>
+   </ul><?php }?>
+</li>
+</ul>
 </div>
 </header>
   <!--CONTENIDO-->

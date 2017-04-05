@@ -82,7 +82,7 @@ document.write("<small>  <font color='FFFFFF' face='Arial'>"+dayarray[day]+" "+d
 <ul>
   <li class="float-left"><a href="#">PREINSCRIPCION</a>
   <ul class="dropdown-content">
-    <li><a href="../views/frmProveedoresInscrip.php">Pre</a></li>
+    <li><a href="../views/frmProveedoresInscrip.php?tipo=PROV280280">Pre</a></li>
   
   </ul>
   </li>

@@ -1,3 +1,8 @@
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/style.css">
+<script src="../js/jquery-latest.js" type="text/javascript"></script>
+<script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
 <?php
 if (!function_exists('Conectarse')){
   include "../Conexion/Conexion.php";
@@ -11,22 +16,47 @@ if(!empty($_POST["conHab"])){
       $emailIns = $_POST["emailIns"];
 	  //num prov anterior, el que va ser modificado (igual a dni_int)
 	  $nroProvIns=$_POST["nroProvIns"];
-	  
+	  $nroSolIns=$_POST["nroSolIns"];
       //buscar ultimo numero de prov +1
       $num_prov = BuscarNumProvInscrip();
-      $query = "UPDATE proveedores SET nroProv='$num_prov' WHERE cuit = '$cuit'";
-	  $query_rel = "UPDATE rel_prov_rubros_sub SET id_proveedor = '$num_prov' WHERE id_proveedor = '$nroProvIns'";
-        if(mysqli_query($Conexion,$query)){
+	  
+	  //aca en vez de update deberia ser un insert select * donde nrosol y cuit sea igual
+	  //esos datos los insertamos en la tabla prov-def
+      //$query = "UPDATE proveedores SET nroProv='$num_prov' WHERE cuit = '$cuit'";
+	  ///$qselec = "SELECT * FROM proveedores WHERE cuit = '$cuit' AND txt_nro_solicitud = '$nroSolIns'";
+	  $queryInsert = "INSERT INTO proveedoresactivos (SELECT * FROM proveedores WHERE txt_nro_solicitud = '".$nroSolIns."' AND cuit = '".$cuit."')";
+	  $queryActualizacionNumProv = "UPDATE proveedoresactivos SET nroProv='".$num_prov."' WHERE cuit = '".$cuit."' AND txt_nro_solicitud = '".$nroSolIns."'";
+	  /* tabla relacion Rubros*/
+	  $query_rel = "UPDATE rel_prov_rubros_sub SET id_proveedor = '".$num_prov."' WHERE id_proveedor = '".$nroProvIns."'";
+        
+		/* Insertamos*/
+		//if(mysqli_query($Conexion,$query)){
+			//mysqli_query($Conexion,$queryInsert)or die(mysqli_error($Conexion));
+		if(mysqli_query($Conexion,$queryInsert)){
+			//actualizamos numero de proveedor
+			mysqli_query($Conexion,$queryActualizacionNumProv);
+			//aactualizamos rubros
+			mysqli_query($Conexion,$query_rel);
+			//enviamos correo
           pre_enviar_correo($emailIns,$num_prov);
+		  
           mysqli_close($Conexion);
-          echo "El Numero de Proveedor Generado es = ".$num_prov."<br />
-          Enviado a ".$emailIns."<br />
-          <a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php'>Volver</a>
+          echo "<h3><span class='label label-success'>El Numero de Proveedor Generado es = ".$num_prov."</span></h3><br />
+          <h3><span class='label label-success'>Enviado a ".$emailIns."</span></h3><br />
+          <h3><span class='label label-success'><a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php' >Volver</a></span></h3>
           ";
         }else {
-          echo "Error en la carga de numero de proveedor<br />
-          <a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php'>Volver</a>
+          echo "<h3><span class='label label-danger'>ERROR EN LA CARGA DE NUMERO DE PROVEEDOR</span></h3>
+		  <br />
+          <h2><span class='label label-danger'>
+		  <a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php'>Volver</a>
+		  </span>
+		  </h2>
+		  <br />
+		  <br /><br /><br />
           ";
+		  echo mysqli_error($Conexion);
+		 //mysqli_query($Conexion,$queryInsert) or die(mysql_error()); 
         }
     }
 }elseif (!empty($_POST["sinHab"])) {
@@ -36,13 +66,51 @@ if(!empty($_POST["conHab"])){
       $emailNoIns = $_POST["emailNoIns"];
 	  //num prov anterior, el que va ser modificado
 	  $nroProvNoIns=$_POST["nroProvNoIns"];
+	  $nroSolNoIns=$_POST["nroSolNoIns"];
       //buscar ultimo numero de prov +1
       $num_prov = BuscarNumProvNoInscrip();
-      $query = "UPDATE proveedores SET nroProv='$num_prov' WHERE cuit = '$cuit'";
-	  $query_rel = "UPDATE rel_prov_rubros_sub SET id_proveedor = '$num_prov' WHERE id_proveedor = '$nroProvNoIns'";
-        if(mysqli_query($Conexion,$query)){
+	  
+	  /*copiar aca*/
+      //$query = "UPDATE proveedores SET nroProv='$num_prov' WHERE cuit = '$cuit'";
+	  $queryInsert = "INSERT INTO proveedoresactivos (SELECT * FROM proveedores WHERE txt_nro_solicitud = '".$nroSolNoIns."' AND cuit = '".$cuit."')";
+	  $queryActualizacionNumProv = "UPDATE proveedoresactivos SET nroProv='".$num_prov."' WHERE cuit = '".$cuit."' AND txt_nro_solicitud = '".$nroSolNoIns."'";
+	  /* tabla relacion Rubros*/
+	  $query_rel = "UPDATE rel_prov_rubros_sub SET id_proveedor = '".$num_prov."' WHERE id_proveedor = '".$nroProvNoIns."'";
+      	  
+	  /*tabla relacion rubros*/
+	  //$query_rel = "UPDATE rel_prov_rubros_sub SET id_proveedor = '$num_prov' WHERE id_proveedor = '$nroProvNoIns'";
+        if(mysqli_query($Conexion,$queryInsert)){
+			//actualizamos numero de proveedor
+			mysqli_query($Conexion,$queryActualizacionNumProv);
+			//aactualizamos rubros
+			mysqli_query($Conexion,$query_rel);
+			//enviamos correo
           pre_enviar_correo($emailNoIns,$num_prov);
-          mysqli_close($Conexion);
+		
+		//if(mysqli_query($Conexion,$query)){
+          //pre_enviar_correo($emailNoIns,$num_prov);
+		  
+		  mysqli_close($Conexion);
+          echo "<h3><span class='label label-success'>El Numero de Proveedor Generado es = ".$num_prov."</span></h3><br />
+          <h3><span class='label label-success'>Enviado a ".$emailNoIns."</span></h3><br />
+          <h3><span class='label label-success'><a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php' >Volver</a></span></h3>
+          ";
+        }else {
+          echo "<h3><span class='label label-danger'>ERROR EN LA CARGA DE NUMERO DE PROVEEDOR</span></h3>
+		  <br />
+          <h2><span class='label label-danger'>
+		  <a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php'>Volver</a>
+		  </span>
+		  </h2>
+		  <br />
+		  <br /><br /><br />
+          ";
+		  echo mysqli_error($Conexion);
+		 //mysqli_query($Conexion,$queryInsert) or die(mysql_error()); 
+        }
+		  
+		  
+          /*mysqli_close($Conexion);
           echo "El Numero de Proveedor Generado es = ".$num_prov."<br />
           Enviado a ".$emailNoIns."<br />
           <a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php'>Volver</a>
@@ -51,8 +119,61 @@ if(!empty($_POST["conHab"])){
           echo "Error en la carga de numero de proveedor<br />
           <a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php'>Volver</a>
           ";
-        }
+        }*/
     }
+}elseif(!empty($_POST["ProvConNum"])){
+	/* SECCION para proveedores con numero definitivo
+	el numero no debe cambiar...(los que estan en emergencia)*/
+	
+	if (!empty($_POST["cuitProvConNum"])) {
+      $cuit = $_POST["cuitProvConNum"];
+      $email = $_POST["emailProvConNum"];
+	  //num prov anterior, el que va ser modificado
+	  //$nroProvNoIns=$_POST["nroProvNoIns"];
+	  $nroSol=$_POST["nroSolProvConNum"];
+      //buscar ultimo numero de prov +1
+      $num_prov = $_POST["nroProvConNum"]; //BuscarNumProvNoInscrip();
+	  
+	  /*copiar aca*/
+      //$query = "UPDATE proveedores SET nroProv='$num_prov' WHERE cuit = '$cuit'";
+	  $queryInsert = "INSERT INTO proveedoresactivos (SELECT * FROM proveedores WHERE txt_nro_solicitud = '".$nroSol."' AND cuit = '".$cuit."')";
+	  //$queryActualizacionNumProv = "UPDATE proveedoresactivos SET nroProv='".$num_prov."' WHERE cuit = '".$cuit."' AND txt_nro_solicitud = '".$nroSol."'";
+	  /* tabla relacion Rubros*/
+	  //$query_rel = "UPDATE rel_prov_rubros_sub SET id_proveedor = '".$num_prov."' WHERE id_proveedor = '".$nroProvNoIns."'";
+      	  
+	  /*tabla relacion rubros*/
+	  //$query_rel = "UPDATE rel_prov_rubros_sub SET id_proveedor = '$num_prov' WHERE id_proveedor = '$nroProvNoIns'";
+        if(mysqli_query($Conexion,$queryInsert)){
+			//actualizamos numero de proveedor
+			//mysqli_query($Conexion,$queryActualizacionNumProv);
+			//aactualizamos rubros
+			//mysqli_query($Conexion,$query_rel);
+			//enviamos correo
+          pre_enviar_correo($email,$num_prov);
+		
+		//if(mysqli_query($Conexion,$query)){
+          //pre_enviar_correo($emailNoIns,$num_prov);
+		  
+		  mysqli_close($Conexion);
+          echo "<h3><span class='label label-success'>El Numero de Proveedor Generado es = ".$num_prov."</span></h3><br />
+          <h3><span class='label label-success'>Enviado a ".$email."</span></h3><br />
+          <h3><span class='label label-success'><a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php' >Volver</a></span></h3>
+          ";
+        }else {
+          echo "<h3><span class='label label-danger'>ERROR EN LA CARGA DE NUMERO DE PROVEEDOR</span></h3>
+		  <br />
+          <h2><span class='label label-danger'>
+		  <a href='http://www.mr.gov.ar/v2/sitio/hacienda/Economia/views/activarproveedorDefinitivo.php'>Volver</a>
+		  </span>
+		  </h2>
+		  <br />
+		  <br /><br /><br />
+          ";
+		  echo mysqli_error($Conexion);
+		}
+	
+	
+	}
 }
 function pre_enviar_correo($direcEmail,$num_prov){
   $destinatarios=$direcEmail;
@@ -69,7 +190,7 @@ function pre_enviar_correo($direcEmail,$num_prov){
 }
 
 function BuscarNumProvInscrip(){
-$queryID = "SELECT nroProv FROM proveedores WHERE nroProv >= 2000 AND nroProv < 6000 ORDER BY nroProv DESC LIMIT 1";
+$queryID = "SELECT nroProv FROM proveedoresactivos WHERE nroProv >= 2000 AND nroProv < 6000 ORDER BY nroProv DESC LIMIT 1";
 $conexion=Conectarse();
 $pr =mysqli_query($conexion,$queryID);
 $tot=mysqli_num_rows($pr);
@@ -81,8 +202,9 @@ return $nro;
 mysqli_free_result($pr);
  mysqli_close($conexion);
 }
+
 function BuscarNumProvNoInscrip(){
-$queryID = "SELECT nroProv FROM proveedores WHERE nroProv >=6000 ORDER BY nroProv DESC LIMIT 1";
+$queryID = "SELECT nroProv FROM proveedoresactivos WHERE nroProv >=6000 ORDER BY nroProv DESC LIMIT 1";
 $conexion=Conectarse();
 $pr =mysqli_query($conexion,$queryID);
 $tot=mysqli_num_rows($pr);
@@ -94,6 +216,7 @@ return $nro;
 mysqli_free_result($pr);
  mysqli_close($conexion);
 }
+
 function enviar_correo($destinatarios, $mail_asunto, $mail_contendio, $from, $from_name){
   require_once('../PHPMailer/PHPMailerAutoload.php');
   include("../PHPMailer/class.smtp.php");

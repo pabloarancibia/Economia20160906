@@ -4,7 +4,7 @@ function Conectarse()
    
 $db_host="localhost";
 $db_usuario="root";
-$db_password="root";
+$db_password="";
 $db_nombre="sececonomiarcia";
 $db_puerto="3306";
 /*

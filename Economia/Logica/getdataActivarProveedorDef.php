@@ -5,10 +5,11 @@ include "../Conexion/Conexion.php";
 $conexion=Conectarse();
 
 $cuit=$_POST["txtCuit"];
+$nroSol=$_POST["txtNroSol"];
 //echo $cuit;
 //echo json_encode(array("nombres"=>$cuit, "domicilio"=>"dom"));
 
-$query = "SELECT * FROM proveedores WHERE cuit = '$cuit'";
+$query = "SELECT * FROM proveedores WHERE cuit = '$cuit' AND txt_nro_solicitud = '$nroSol'";// AND txt_nro_solicitud = '$nroSol'
 $datosProv = mysqli_query($conexion, $query) or die(mysql_error());
 
 if (mysqli_num_rows($datosProv)!=0){
@@ -18,13 +19,34 @@ if (mysqli_num_rows($datosProv)!=0){
     $cuit = $registro['cuit'];
     $email = $registro['email'];
 	$nroProv = $registro['nroProv'];
+	$tel = $registro['tel'];
+	$cp = $registro['cp'];
+	$numSol = $registro['txt_nro_solicitud'];
+	$dniInt = $registro['dni_int'];
   //echo json_encode(array("nombres"=>$nombres, "domicilio"=>$domicilio));
   }
-  echo json_encode(array("nombres"=>$nombres, "domicilio"=>$domicilio,"cuit"=>$cuit,"email"=>$email,"nroProv"=>$nroProv));
+  echo json_encode(array(
+  "nombres"=>$nombres, 
+  "domicilio"=>$domicilio,
+  "cuit"=>$cuit,
+  "email"=>$email,
+  "nroProv"=>$nroProv,
+  "tel"=>$tel,
+  "cp"=>$cp,
+  "numSol"=>$numSol,
+  "dniInt"=>$dniInt
+  ));
 }else {
-  echo json_encode(array("nombres"=>"no hay datos", "domicilio"=>"no hay datos","cuit"=>"no hay datos","email"=>"no hay datos"));
+  echo json_encode(array(
+  "nombres"=>"no hay datos", 
+  "domicilio"=>"no hay datos",
+  "cuit"=>"no hay datos",
+  "email"=>"no hay datos"
+  ));
 }
 
+mysqli_free_result($datosProv);
+mysqli_close($conexion);
 /*
 if($cuit=="10")
 {
